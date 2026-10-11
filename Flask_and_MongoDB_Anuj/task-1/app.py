@@ -4,6 +4,7 @@ app = Flask(__name__)
 def api():
     data = [
         {"name": "Anuj", "course": "DevOps"},
+        {"name": "Rishu", "course": "Python"},
         {"name": "Harsh", "course": "Flask And MongoDb"}
     ]
     return jsonify(data)
