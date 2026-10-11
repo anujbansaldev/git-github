@@ -4,7 +4,7 @@ app = Flask(__name__)
 def api():
     data = [
         {"name": "Anuj", "course": "DevOps"},
-        {"name": "Harsh", "course": "Flask MongoDb"}
+        {"name": "Harsh", "course": "Flask And MongoDb"}
     ]
     return jsonify(data)
 @app.route("/")
