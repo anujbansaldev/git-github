@@ -3,8 +3,8 @@ app = Flask(__name__)
 @app.route("/api")
 def api():
     data = [
-        {"name": "Anuj", "course": "DevOps"},
-        {"name": "Harsh", "course": "Flask And MongoDb"}
+        {"name": "Anuj", "course": "DevOps"}
+        {"name": "Harsh", "course": "MongoDb And Flask"}
     ]
     return jsonify(data)
 @app.route("/")
