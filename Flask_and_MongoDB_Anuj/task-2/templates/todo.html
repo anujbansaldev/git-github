@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do Page</title>
+</head>
+<body>
+    <h1>To-Do Form</h1>
+
+    <form id="todoForm">
+        <label for="itemName">Item Name:</label>
+        <input id="itemName" name="itemName" required>
+
+        <br><br>
+
+        <label for="itemDescription">Item Description:</label>
+        <textarea id="itemDescription" name="itemDescription" required></textarea>
+
+        <br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="message"></p>
+
+    <script>
+        document.getElementById("todoForm").addEventListener("submit", async function (event) {
+            event.preventDefault();
+
+            const itemName = document.getElementById("itemName").value.trim();
+            const itemDescription = document.getElementById("itemDescription").value.trim();
+
+            try {
+                const response = await fetch("/submittodoitem", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ itemName, itemDescription })
+                });
+
+                const result = await response.json();
+                document.getElementById("message").textContent =
+                    result.message || result.error || "Request completed.";
+
+                if (response.ok) this.reset();
+            } catch {
+                document.getElementById("message").textContent =
+                    "Unable to connect to the server.";
+            }
+        });
+    </script>
+</body>
+</html>
